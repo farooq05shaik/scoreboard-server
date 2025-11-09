@@ -2,6 +2,11 @@
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
+// --- global crash/error catchers ---
+process.on('uncaughtException', err => console.error('UNCAUGHT_EXCEPTION', err));
+process.on('unhandledRejection', err => console.error('UNHANDLED_REJECTION', err));
+// --- end crash/error catchers ---
+
 
 const app = express();
 const server = http.createServer(app);
